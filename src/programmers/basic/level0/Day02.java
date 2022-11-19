@@ -1,4 +1,4 @@
-package programmers.basic;
+package programmers.basic.level0;
 
 /**
  * 사칙연산, 조건문, 배열
