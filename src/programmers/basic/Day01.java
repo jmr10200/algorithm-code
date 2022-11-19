@@ -1,5 +1,8 @@
 package programmers.basic;
 
+/**
+ * 사칙연산
+ */
 public class Day01 {
 
     /**
