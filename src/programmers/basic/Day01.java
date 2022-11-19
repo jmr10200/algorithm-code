@@ -1,0 +1,32 @@
+package programmers.basic;
+
+public class Day01 {
+
+    /**
+     * 두수의 합
+     */
+    public int plusSolution(int num1, int num2) {
+        return num1 + num2;
+    }
+
+    /**
+     * 두수의 차
+     */
+    public int minusSolution(int num1, int num2) {
+        return num1 - num2;
+    }
+
+    /**
+     * 두수의 곱
+     */
+    public int multiplySolution(int num1, int num2) {
+        return num1 * num2;
+    }
+
+    /**
+     * 몫 구하기
+     */
+    public int solution(int num1, int num2) {
+        return num1 / num2;
+    }
+}
