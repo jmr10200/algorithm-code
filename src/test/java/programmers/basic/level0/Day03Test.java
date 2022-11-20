@@ -25,7 +25,7 @@ class Day03Test {
     }
 
     @Test
-    @DisplayName("중앙값 구하기(배열:홀수)")
+    @DisplayName("중앙값 구하기(배열:홀수) - for 이용")
     void solution2_1() {
         int[] array = {1, 2, 7, 10, 11};
         int result = 7;
@@ -37,7 +37,7 @@ class Day03Test {
     }
 
     @Test
-    @DisplayName("중앙값 구하기(배열:홀수)")
+    @DisplayName("중앙값 구하기(배열:홀수) - Arrays 이용")
     void solution2_2() {
         int[] array = {1, 2, 7, 10, 11};
         int result = 7;
