@@ -105,7 +105,7 @@ public class Day09 {
      * @param share 나누어줄 구술 개수
      * @return balls 개의 구슬 중 share 개의 구슬을 고르는 가능한 모든 경우의 수 (순서 무관)
      */
-    public BigInteger solution4_1(int balls, int share) {
+    public BigInteger solution4(int balls, int share) {
         BigInteger answer = BigInteger.ZERO;
         BigInteger permutation = BigInteger.ONE; // import java.math.*;
         BigInteger num = BigInteger.ONE;
