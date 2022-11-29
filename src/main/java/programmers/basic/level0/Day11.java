@@ -29,8 +29,8 @@ public class Day11 {
      */
     public int solution2(int n) {
         int answer = 0;
-        int primeNumCnt = 0;
-        int divideCount = 0;
+        int primeNumCnt = 0; // 소수 개수
+        int divideCount = 0; // 나눠지는 수 카운트
         for (int i = 1; i <= n; i++) {
             if (i == 1) {
                 primeNumCnt++;
