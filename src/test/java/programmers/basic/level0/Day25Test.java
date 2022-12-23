@@ -54,22 +54,22 @@ class Day25Test {
         int num = 3;
         int total = 12;
         int[] result = {3, 4, 5};
-        assertEquals(day25.solution3(num, total), result);
+        assertArrayEquals(day25.solution3(num, total), result);
 
         num = 5;
         total = 15;
         result = new int[]{1, 2, 3, 4, 5};
-        assertEquals(day25.solution3(num, total), result);
+        assertArrayEquals(day25.solution3(num, total), result);
 
         num = 4;
         total = 14;
         result = new int[]{2, 3, 4, 5};
-        assertEquals(day25.solution3(num, total), result);
+        assertArrayEquals(day25.solution3(num, total), result);
 
         num = 5;
         total = 5;
         result = new int[]{-1, 0, 1, 2, 3};
-        assertEquals(day25.solution3(num, total), result);
+        assertArrayEquals(day25.solution3(num, total), result);
     }
 
     @Test

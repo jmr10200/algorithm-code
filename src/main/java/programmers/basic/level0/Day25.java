@@ -64,7 +64,13 @@ public class Day25 {
      */
     public int[] solution3(int num, int total) {
         int[] answer = new int[num];
-
+        // (x+1)+(x+2)+(x+3)+(x+4)+(x+5)... = total 등차수열 이용
+        // nx + (1 + ... + n) = total
+        int nSum = num * (1 + num) / 2; // num 의 합 : (1 + ... + n) 해당하는 부분의 합
+        int startNum = (total - nSum) / num; // nx 에서의 x 값 (초항이됨)
+        for (int i = 1; i < num + 1; i++) {
+            answer[i - 1] = i + startNum;
+        }
         return answer;
     }
 
