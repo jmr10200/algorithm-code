@@ -61,13 +61,18 @@ public class Level1Day12 {
 
     /**
      * 콜라 문제
-     * @param a
-     * @param b
-     * @param n
-     * @return
+     * @param a 콜라를 받기 위해 마트에 주어야 하는 병 수
+     * @param b 빈 병 a개를 가져다 주면 마트가 주는 콜라 병 수
+     * @param n 가지고 있는 빈 병의 개수
+     * @return n 개 가져다주면 몇개 받을 수 있는가.
      */
     public int solution3(int a, int b, int n) {
         int answer = 0;
+        while (n >= a) {
+            answer += (n / a) * b;
+//            n = n - (n - (n % a)) + ((n / a) * b);
+            n = (n % a) + ((n / a) * b);
+        }
         return answer;
     }
 
