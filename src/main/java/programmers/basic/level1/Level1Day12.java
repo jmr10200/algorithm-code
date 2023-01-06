@@ -54,9 +54,37 @@ public class Level1Day12 {
      */
     public int solution2(int[] nums) {
         int answer = 0;
-
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                for (int n = j + 1; n < nums.length; n++) {
+                    int sum = nums[i] + nums[j] + nums[n];
+                    if (isPrime(sum)) {
+                        answer++;
+                    }
+                }
+            }
+        }
 
         return answer;
+    }
+
+    /**
+     * 소수판별
+     * @param sum
+     * @return 소수이면 true 아니면 false
+     */
+    private boolean isPrime(int sum) {
+        boolean result = true;
+        int divideCnt = 0;
+        for (int i = 1; i <= sum; i++) {
+            if (sum % i == 0) {
+                divideCnt++;
+            }
+            if (divideCnt > 2) {
+                result = false;
+            }
+        }
+        return result;
     }
 
     /**
