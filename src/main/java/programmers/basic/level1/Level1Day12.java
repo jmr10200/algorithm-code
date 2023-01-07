@@ -1,7 +1,6 @@
 package programmers.basic.level1;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Level1Day12 {
 
@@ -106,12 +105,44 @@ public class Level1Day12 {
 
     /**
      * 실패율
-     * @param N
-     * @param stages
-     * @return
+     * @param N 전체 스테이지의 개수
+     * @param stages 게임을 이용하는 사용자가 현재 멈춰있는 스테이지의 번호가 담긴 배열
+     * @return 실패율 내림차순 배열 : 스테이지에 도달했으나 아직 클리어하지 못한 플레이어의 수 / 스테이지에 도달한 플레이어 수
+     * N + 1 마지막 스테이지 (N 번째 스테이지) 까지 클리어 한 사용자
      */
     public int[] solution4(int N, int[] stages) {
-        int[] answer = {};
+        int[] answer = new int[N];
+        int userNumbers = stages.length; // 전체 유저수
+        int[] stageUser = new int[N + 2]; // +2 로 유저수 인덱스화
+        // 스테이지 유저 수
+        for (int i = 0; i < userNumbers; i++) {
+            stageUser[stages[i]]++;
+        }
+
+        // key : 스테이지 번호 , value : 실패율
+        Map<Integer, Double> failRatioMap = new HashMap<>();
+        // 실패율 배열
+        int user = 0;
+        for (int i = 0; i <= N; i++) {
+            if (userNumbers - user == 0) {
+                failRatioMap.put(i + 1, 0.0);
+            } else {
+                failRatioMap.put(i + 1, (double) stageUser[i + 1] / (userNumbers - user));
+            }
+            user += stageUser[i + 1];
+        }
+        // value 값으로 key 내림차순 정렬
+        List<Integer> keyList = new ArrayList<>(failRatioMap.keySet());
+        Collections.sort(keyList, (o1, o2) -> (failRatioMap.get(o2).compareTo(failRatioMap.get(o1))));
+
+        // 결과배열 설정
+        int idx = 0;
+        for (Integer key : keyList) {
+            if (key <= N) {
+                answer[idx] = key;
+                idx++;
+            }
+        }
         return answer;
     }
 }
