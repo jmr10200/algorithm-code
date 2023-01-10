@@ -123,13 +123,13 @@ public class Level1Day12 {
         Map<Integer, Double> failRatioMap = new HashMap<>();
         // 실패율 배열
         int user = 0;
-        for (int i = 0; i <= N; i++) {
+        for (int i = 1; i <= N; i++) {
             if (userNumbers - user == 0) {
-                failRatioMap.put(i + 1, 0.0);
+                failRatioMap.put(i, 0.0);
             } else {
-                failRatioMap.put(i + 1, (double) stageUser[i + 1] / (userNumbers - user));
+                failRatioMap.put(i, (double) stageUser[i] / (userNumbers - user));
             }
-            user += stageUser[i + 1];
+            user += stageUser[i];
         }
         // value 값으로 key 내림차순 정렬
         List<Integer> keyList = new ArrayList<>(failRatioMap.keySet());
