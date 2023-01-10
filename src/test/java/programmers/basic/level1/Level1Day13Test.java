@@ -66,4 +66,17 @@ class Level1Day13Test {
         assertEquals(day13.solution2(dartResult), result);
     }
 
+    @Test
+    @DisplayName("푸드 파이트 대회")
+    void solution3() {
+        int[] food = {1, 3, 4, 6};
+        String result = "1223330333221";
+        assertEquals(day13.solution3(food), result);
+
+        food = new int[]{1, 7, 1, 2};
+        result = "111303111";
+        assertEquals(day13.solution3(food), result);
+    }
+
+
 }

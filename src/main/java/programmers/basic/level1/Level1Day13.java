@@ -1,8 +1,5 @@
 package programmers.basic.level1;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Level1Day13 {
 
     /**
@@ -89,5 +86,25 @@ public class Level1Day13 {
         return result;
     }
 
+    /**
+     * 푸드 파이트 대회
+     * @param food 칼로리가 적은 순서대로 음식의 양, 0번 음식은 물
+     * @return 좌,우 왼쪽에서 동일하게 음식을 먹을때의 음식 배치도
+     */
+    public String solution3(int[] food) {
+        String answer = "";
+        StringBuilder sb = new StringBuilder();
+        // 왼쪽 사람이 먹는 음식 나열
+        for (int i = 1; i < food.length; i++) {
+            for (int j = 1; j <= food[i] / 2; j++) {
+                sb.append(i);
+            }
+        }
+        answer = sb.toString();
+        answer += "0"; // 물
+        // 뒤집어서 오른쪽 사람이 먹는 음식 나열
+        answer += sb.reverse().toString();
+        return answer;
+    }
 
 }
