@@ -124,7 +124,7 @@ public class Level1Day12 {
         // 실패율 배열
         int user = 0;
         for (int i = 1; i <= N; i++) {
-            if (userNumbers - user == 0) {
+            if (userNumbers - user == 0) { // 0 으로 나누면 에러 발생하므로 체크 필요
                 failRatioMap.put(i, 0.0);
             } else {
                 failRatioMap.put(i, (double) stageUser[i] / (userNumbers - user));
