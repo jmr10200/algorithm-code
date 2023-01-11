@@ -107,4 +107,57 @@ public class Level1Day13 {
         return answer;
     }
 
+    /**
+     * 로또의 최고 순위와 최저 순위
+     * @param lottos 구매한 로또 번호를 담은 배열, 알아볼 수 없는 번호를 0으로 표기
+     * @param win_nums 당첨 번호를 담은 배열
+     * @return 당첨 가능한 최고 순위, 최저 순위를 순서대로 담은 배열
+     */
+    public int[] solution4(int[] lottos, int[] win_nums) {
+        int[] answer = new int[2];
+        int zeroCnt = 0; // 0으로 표기한 번호 카운트
+        int minWin = 0; // 현재 알 수 있는 번호로 당첨된 최저 당첨 카운트
+        for (int lot : lottos) {
+            if (lot == 0) {
+                zeroCnt++;
+            }else {
+                for (int win : win_nums) {
+                    if (win == lot) {
+                        minWin++;
+                    }
+                }
+            }
+        }
+        int maxWin = minWin + zeroCnt; // 최고 당첨 카운트
+        // 당첨된 번호 개수를 순위로 변환
+        answer[0] = getRank(maxWin);
+        answer[1] = getRank(minWin);
+        return answer;
+    }
+
+    private int getRank(int winNum) {
+        int result = 6;
+        switch (winNum) {
+            case 6:
+                result = 1;
+                break;
+            case 5:
+                result = 2;
+                break;
+            case 4:
+                result = 3;
+                break;
+            case 3:
+                result = 4;
+                break;
+            case 2:
+                result = 5;
+                break;
+            default:
+                result = 6;
+                break;
+        }
+        return result;
+    }
+
 }

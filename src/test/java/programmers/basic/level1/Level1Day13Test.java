@@ -78,5 +78,23 @@ class Level1Day13Test {
         assertEquals(day13.solution3(food), result);
     }
 
+    @Test
+    @DisplayName("로또의 최고 순위와 최저 순위")
+    void solution4() {
+        int[] lottos = {44, 1, 0, 0, 31, 25};
+        int[] win_nums = {31, 10, 45, 1, 6, 19};
+        int[] result = {3, 5};
+        assertArrayEquals(day13.solution4(lottos, win_nums), result);
+
+        lottos = new int[]{0, 0, 0, 0, 0, 0};
+        win_nums = new int[]{38, 19, 20, 40, 15, 25};
+        result = new int[]{1, 6};
+        assertArrayEquals(day13.solution4(lottos, win_nums), result);
+
+        lottos = new int[]{45, 4, 35, 20, 3, 9};
+        win_nums = new int[]{20, 9, 3, 45, 4, 35};
+        result = new int[]{1, 1};
+        assertArrayEquals(day13.solution4(lottos, win_nums), result);
+    }
 
 }
