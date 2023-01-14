@@ -58,4 +58,38 @@ class Level1Day14Test {
 
     }
 
+    @Test
+    @DisplayName("완주하지 못한 선수")
+    void solution3() {
+        String[] participant = {"leo", "kiki", "eden"};
+        String[] completion = {"eden", "kiki"};
+        String result = "leo";
+        assertEquals(day14.solution3(participant, completion), result);
+
+        participant = new String[]{"marina", "josipa", "nikola", "vinko", "filipa"};
+        completion = new String[]{"josipa", "filipa", "marina", "nikola"};
+        result = "vinko";
+        assertEquals(day14.solution3(participant, completion), result);
+
+        participant = new String[]{"mislav", "stanko", "mislav", "ana"};
+        completion = new String[]{"stanko", "ana", "mislav"};
+        result = "mislav";
+        assertEquals(day14.solution3(participant, completion), result);
+    }
+
+    @Test
+    @DisplayName("과일 장수")
+    void solution4() {
+        int k = 3;
+        int m = 4;
+        int[] score = {1, 2, 3, 1, 2, 3, 1};
+        int result = 8;
+        assertEquals(day14.solution4(k, m, score), result);
+
+        k = 4;
+        m = 3;
+        score = new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2};
+        result = 33;
+        assertEquals(day14.solution4(k, m, score), result);
+    }
 }

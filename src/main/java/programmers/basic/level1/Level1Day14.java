@@ -2,6 +2,8 @@ package programmers.basic.level1;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Level1Day14 {
 
@@ -70,4 +72,43 @@ public class Level1Day14 {
         return answer;
     }
 
+    /**
+     * 완주하지 못한 선수
+     * @param participant 마라톤에 참여한 선수들의 이름이 담긴 배열
+     * @param completion 완주한 선수들의 이름이 담긴 배열
+     * @return 완주하지 못한 선수의 이름
+     */
+    public String solution3(String[] participant, String[] completion) {
+        String answer = "";
+        // 참가자Map : key = 이름 , value = 참가자 수
+        Map<String, Integer> participantMap = new HashMap<>();
+        for (String p : participant) {
+            // 동명이인(중복키) 있을 가능성이 존재하므로, defaultValue + 1 로 설정
+            participantMap.put(p, participantMap.getOrDefault(p, 0) + 1);
+        }
+        // 참가자Map 에서 완주자를 찾아 있으면 value 값을 -1 해준다.
+        for (String c : completion) {
+            participantMap.put(c, participantMap.get(c) - 1);
+        }
+        // 참가자Map 에서 value 값이 0이 아니면 완주하지 못한 사람이다.
+        for (String key : participantMap.keySet()) {
+            if (participantMap.get(key) != 0) {
+                answer = key;
+                break;
+            }
+        }
+        return answer;
+    }
+
+    /**
+     * 과일 장수
+     * @param k
+     * @param m
+     * @param score
+     * @return
+     */
+    public int solution4(int k, int m, int[] score) {
+        int answer = 0;
+        return answer;
+    }
 }
