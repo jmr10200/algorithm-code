@@ -1,9 +1,8 @@
 package programmers.basic.level1;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Level1Day14 {
 
@@ -102,13 +101,58 @@ public class Level1Day14 {
 
     /**
      * 과일 장수
-     * @param k
-     * @param m
-     * @param score
-     * @return
+     * @param k 사과의 최대 점수
+     * @param m 한 상자당 사과 개수
+     * @param score 사과들의 점수
+     * @return 가능한 많은 사과를 팔았을 때, 얻을 수 있는 최대 이익, 이익이 발생하지 않으면 0
+     * 상자에 담긴 사과 중 가장 낮은 점수가 p (1 ≤ p ≤ k)점인 경우, 사과 한 상자의 가격은 p * m
      */
-    public int solution4(int k, int m, int[] score) {
+    public int solution4_1(int k, int m, int[] score) {
         int answer = 0;
+        int appleCnt = score.length;
+        // 한 상자를 못만들면 팔 수 없으므로 이익 0
+        if (appleCnt < m) {
+            return answer;
+        }
+        // 사과 점수 int[] -> List<Integer>, 내림차순 정렬
+        List<Integer> appleScore = Arrays.stream(score).boxed().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        for (int i = 0; i < appleCnt; i++) {
+            // (i+1) 을 한 박스의 사과 개수로 나눴을 때 나머지가 0 이면 1박스 채워진 것
+            if ((i + 1) % m == 0) {
+                // 내림차순 정렬했으므로, 사과 개수의 마지막 인덱스가 최저 점수
+                answer += appleScore.get(i) * m;
+            }
+        }
+        return answer;
+    }
+
+    /**
+     * solution4_1 이 아래 코드를 조금 변형한 것이다.
+     * Integer[] 대신 List<Integer> 를 사용했다.
+     */
+    public int solution4_2(int k, int m, int[] score) {
+        int answer = 0;
+        int appleCnt = score.length;
+        // 한 상자를 못만들면 팔 수 없으므로 이익 0
+        if (appleCnt < m) {
+            return answer;
+        }
+        // 사과 점수 int[] -> Integer[], 내림차순 정렬
+        Integer[] appleScore = Arrays.stream(score).boxed().sorted(Comparator.reverseOrder()).toArray(Integer[]::new);
+        int minScore = appleScore[0];
+        int idx = 0;
+        for (int i = 0; i < appleCnt; i++) {
+            // m개 씩 확인하여 최저 사과 점수 취득
+            if (idx < m) {
+                minScore = Math.min(minScore, appleScore[i]);
+            }
+            idx++;
+            if (idx == m) {
+                answer += minScore * m;
+                idx = 0;
+            }
+        }
+        // (최저 사과 점수) x (한 상자에 담긴 사과 개수) x (상자의 개수)
         return answer;
     }
 }

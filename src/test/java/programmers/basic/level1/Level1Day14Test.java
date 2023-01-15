@@ -79,17 +79,33 @@ class Level1Day14Test {
 
     @Test
     @DisplayName("과일 장수")
-    void solution4() {
+    void solution4_1() {
         int k = 3;
         int m = 4;
         int[] score = {1, 2, 3, 1, 2, 3, 1};
         int result = 8;
-        assertEquals(day14.solution4(k, m, score), result);
+        assertEquals(day14.solution4_1(k, m, score), result);
 
         k = 4;
         m = 3;
         score = new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2};
         result = 33;
-        assertEquals(day14.solution4(k, m, score), result);
+        assertEquals(day14.solution4_1(k, m, score), result);
+    }
+
+    @Test
+    @DisplayName("과일 장수")
+    void solution4_2() {
+        int k = 3;
+        int m = 4;
+        int[] score = {1, 2, 3, 1, 2, 3, 1};
+        int result = 8;
+        assertEquals(day14.solution4_2(k, m, score), result);
+
+        k = 4;
+        m = 3;
+        score = new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2};
+        result = 33;
+        assertEquals(day14.solution4_2(k, m, score), result);
     }
 }
