@@ -24,4 +24,33 @@ class Level1Day15Test {
         assertArrayEquals(day15.solution1(k, score), result);
     }
 
+    @Test
+    @DisplayName("숫자 짝꿍")
+    void solution2() {
+        String x = "100";
+        String y = "2345";
+        String result = "-1";
+        assertEquals(day15.solution2(x, y), result);
+
+        x = "100";
+        y = "203045";
+        result = "0";
+        assertEquals(day15.solution2(x, y), result);
+
+        x = "100";
+        y = "123450";
+        result = "10";
+        assertEquals(day15.solution2(x, y), result);
+
+        x = "12321";
+        y = "42531";
+        result = "321";
+        assertEquals(day15.solution2(x, y), result);
+
+        x = "5525";
+        y = "1255";
+        result = "552";
+        assertEquals(day15.solution2(x, y), result);
+    }
+
 }
