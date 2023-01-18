@@ -84,4 +84,73 @@ public class Level1Day15 {
         return answer;
     }
 
+    /**
+     * 키패드 누르기
+     * @param numbers 순서대로 누를 번호가 담긴 배열
+     * @param hand 왼손잡이 : left , 오른손잡이 : right
+     * @return 각 번호를 누른 엄지손가락이 왼손인 지 오른손인 지를 나타내는 연속된 문자열 (왼손 L , 오른손 R)
+     * 키패드 ->   숫자화　  =>  좌표화
+     * 1 2 3 ->  1  2  3  => (0,0)  (0,1)  (0,2)
+     * 4 5 6 ->  4  5  6  => (1,0)  (1,1)  (1,2)
+     * 7 8 9 ->  7  8  9  => (2,0)  (2,1)  (2,2)
+     * * 0 # -> 10 11 12  => (3,0)  (3,1)  (3,2)
+     */
+    public String solution3(int[] numbers, String hand) {
+        String answer = "";
+        StringBuilder sb = new StringBuilder();
+        int leftState = 10; // * 보정 값 10
+        int rightState = 12; // # 보정 값 12
+        for (int num : numbers) {
+            if (num == 1 || num == 4 || num == 7) {
+                leftState = num;
+                sb.append(LEFT_HAND);
+            } else if (num == 3 || num == 6 || num == 9) {
+                rightState = num;
+                sb.append(RIGHT_HAND);
+            } else {
+                // 2, 5, 8, 0 인 경우
+                int leftDistance = getDistance(leftState, num);
+                int rightDistance = getDistance(rightState, num);
+                if (leftDistance > rightDistance) {
+                    // 오른손이 더 가까운 경우
+                    rightState = num;
+                    sb.append(RIGHT_HAND);
+                } else if (leftDistance < rightDistance) {
+                    // 왼손이 더 가까운 경우
+                    leftState = num;
+                    sb.append(LEFT_HAND);
+                } else if (leftDistance == rightDistance) {
+                    // 거리 동일 한경우 왼손잡이, 오른손잡이 판정
+                    if (LEFT.equals(hand)) {
+                        leftState = num;
+                        sb.append(LEFT_HAND);
+                    } else {
+                        rightState = num;
+                        sb.append(RIGHT_HAND);
+                    }
+                }
+
+            }
+        }
+        answer = sb.toString();
+        return answer;
+    }
+
+    private int getDistance(int currentState, int target) {
+        int result = 0;
+        // 0 인경우 11 으로 값 보정
+        target = target == 0 ? 11 : target;
+        currentState = currentState == 0 ? 11 : currentState;
+        // x 좌표 거리 = (숫자 - 1) / 3
+        result += Math.abs((currentState - 1) / 3 - (target - 1) / 3);
+        // y 좌표 거리 = (숫자 - 1) % 3
+        result += Math.abs((currentState - 1) % 3 - (target - 1) % 3);
+        return result;
+    }
+
+    private final static String LEFT_HAND = "L";
+    private final static String RIGHT_HAND = "R";
+    private final static String LEFT = "left";
+
+
 }

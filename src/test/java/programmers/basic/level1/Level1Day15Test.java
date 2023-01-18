@@ -53,4 +53,24 @@ class Level1Day15Test {
         assertEquals(day15.solution2(x, y), result);
     }
 
+    @Test
+    @DisplayName("키패드 누르기")
+    void solution3() {
+        int[] numbers = {1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5};
+        String hand = "right";
+        String result = "LRLLLRLLRRL";
+        assertEquals(day15.solution3(numbers, hand), result);
+
+        numbers = new int[]{7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2};
+        hand = "left";
+        result = "LRLLRRLLLRR";
+        assertEquals(day15.solution3(numbers, hand), result);
+
+        numbers = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+        hand = "right";
+        result = "LLRLLRLLRL";
+        assertEquals(day15.solution3(numbers, hand), result);
+    }
+
+
 }
