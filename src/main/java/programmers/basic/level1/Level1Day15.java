@@ -152,5 +152,35 @@ public class Level1Day15 {
     private final static String RIGHT_HAND = "R";
     private final static String LEFT = "left";
 
-
+    /**
+     * 크레인 인형 뽑기 게임
+     * @param board 게임 화면 "1 x 1" 크기의 칸들로 이루어진 "N x N" 크기의 정사각 격자
+     * @param moves 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열
+     * @return 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수
+     */
+    public int solution4(int[][] board, int[] moves) {
+        int answer = 0;
+        // stack.peek() : top 데이터 취득
+        Stack<Integer> stack = new Stack<>();
+        for (int m : moves) {
+            for (int i = 0; i < board.length; i++) {
+                // 0이 아닌 값일때까지 찾아서
+                if (board[i][m - 1] != 0) {
+                    // 집어넣는 값이 현재 스택의 맨 위 값과 동일하면 터트려야한다.
+                    if (!stack.empty() && board[i][m - 1] == stack.peek()) {
+                        stack.pop();
+                        answer += 2;
+                    } else {
+                        // 0이 아닐 때 값을 넣는다.
+                        stack.push(board[i][m - 1]);
+                    }
+                    // 값을 바구니에 넣고다면 board 에서 삭제
+                    board[i][m - 1] = 0;
+                    // 넣었으니 break
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
 }
