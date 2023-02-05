@@ -25,4 +25,20 @@ class Level1Day16Test {
         result = 21;
         assertEquals(day16.solution1(number, limit, power), result);
     }
+
+    @Test
+    @DisplayName("문자열 나누기")
+    void solution2() {
+        String s = "banana";
+        int result = 3;
+        assertEquals(day16.solution2(s), result);
+
+        s = "abracadabra";
+        result = 6;
+        assertEquals(day16.solution2(s), result);
+
+        s = "aaabbaccccabba";
+        result = 3;
+        assertEquals(day16.solution2(s), result);
+    }
 }

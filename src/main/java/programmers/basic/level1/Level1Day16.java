@@ -47,4 +47,37 @@ public class Level1Day16 {
         }
         return cnt;
     }
+
+    /**
+     * 문자열 나누기
+     * @param s
+     * @return 나눠진 문자열 개수
+     */
+    public int solution2(String s) {
+        int answer = 0;
+        String[] splitStr = s.split("");
+        // 첫번째 문자 지정
+        String x = splitStr[0];
+        int xCnt = 1;
+        int yCnt = 0;
+        for (int i = 1; i < splitStr.length; i++) {
+            if (x.equals(splitStr[i])) {
+                xCnt++;
+            } else {
+                yCnt++;
+            }
+            if (xCnt == yCnt) {
+                answer++;
+                if ((i + 1) < splitStr.length) {
+                    x = splitStr[i + 1];
+                } else {
+                    break;
+                }
+            }
+        }
+        if (xCnt > yCnt && (xCnt + yCnt) == splitStr.length) {
+            answer++;
+        }
+        return answer;
+    }
 }
