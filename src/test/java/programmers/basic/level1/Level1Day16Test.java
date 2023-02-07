@@ -58,4 +58,17 @@ class Level1Day16Test {
         assertArrayEquals(day16.solution3(today, terms, privacies), result);
     }
 
+    @Test
+    @DisplayName("성격 유형 검사하기")
+    void solution4() {
+        String[] survey = {"AN", "CF", "MJ", "RT", "NA"};
+        int[] choices = {5, 3, 2, 7, 5};
+        String result = "TCMA";
+        assertEquals(day16.solution4(survey, choices), result);
+
+        survey = new String[]{"TR", "RT", "TR"};
+        choices = new int[]{7, 1, 3};
+        result = "RCJA";
+        assertEquals(day16.solution4(survey, choices), result);
+    }
 }

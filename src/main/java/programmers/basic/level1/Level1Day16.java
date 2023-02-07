@@ -143,5 +143,50 @@ public class Level1Day16 {
         return (year * 12 * 28) + (month * 28) + day;
     }
 
+    /**
+     * 성격 유형 검사하기
+     * @param survey 질문마다 판단하는 지표를 담은 1차원 문자열 배열
+     * @param choices 검사자가 각 질문마다 선택한 선택지를 담은 1차원 정수 배열
+     * @return 검사자의 성격 유형 검사 결과를 지표 번호 순서대로, 동점이면 사전순으로 빠른 알파벳으로 정해짐
+     */
+    public String solution4(String[] survey, int[] choices) {
+        String answer = "";
+        StringBuilder sb = new StringBuilder();
+        Integer[] scores = {0, 3, 2, 1, 0, 1, 2, 3}; // 점수 인덱스화
+        String[] types = {"RT", "CF", "JM", "AN"}; // 4가지 타입
+        Map<String, Integer> typeScore = createTypeScore(types); // 점수표 생성
+        for (int i = 0; i < survey.length; i++) {
+            String[] s = survey[i].split("");
+            Integer score = scores[choices[i]];
+            if (choices[i] < 4) {
+                typeScore.put(s[0], typeScore.getOrDefault(s[0], 0) + score);
+            } else {
+                typeScore.put(s[1], typeScore.getOrDefault(s[1], 0) + score);
+            }
+        }
+        for (String type : types) {
+            String[] tp = type.split("");
+            if (typeScore.get(tp[0]) >= typeScore.get(tp[1])) {
+                sb.append(tp[0]);
+            } else {
+                sb.append(tp[1]);
+            }
+        }
+        answer = sb.toString();
+        return answer;
+    }
+
+    /**
+     * 점수표 생성
+     */
+    private Map<String, Integer> createTypeScore(String[] types){
+        Map<String, Integer> result = new HashMap<>();
+        for (String type : types) {
+            String[] splitType = type.split("");
+            result.put(splitType[0], 0);
+            result.put(splitType[1], 0);
+        }
+        return result;
+    }
 
 }
