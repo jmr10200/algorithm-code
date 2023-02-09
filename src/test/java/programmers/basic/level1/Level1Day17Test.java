@@ -22,4 +22,29 @@ class Level1Day17Test {
         assertEquals(day17.solution1(babbling), result);
     }
 
+    @Test
+    @DisplayName("신규 아이디 추천")
+    void solution2() {
+        String newId = "...!@BaT#*..y.abcdefghijklm";
+        String result = "bat.y.abcdefghi";
+        assertEquals(day17.solution2(newId), result);
+
+        newId = "z-+.^.";
+        result = "z--";
+        assertEquals(day17.solution2(newId), result);
+
+        newId = "=.=";
+        result = "aaa";
+        assertEquals(day17.solution2(newId), result);
+
+        newId = "123_.def";
+        result = "123_.def";
+        assertEquals(day17.solution2(newId), result);
+
+        newId = "abcdefghijklmn.p";
+        result = "abcdefghijklmn";
+        assertEquals(day17.solution2(newId), result);
+    }
+
+
 }
