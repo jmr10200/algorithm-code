@@ -46,5 +46,32 @@ class Level1Day17Test {
         assertEquals(day17.solution2(newId), result);
     }
 
+    @Test
+    @DisplayName("햄버거 만들기")
+    void solution3() {
+        int[] ingredient = {2, 1, 1, 2, 3, 1, 2, 3, 1};
+        int result = 2;
+        assertEquals(day17.solution3(ingredient), result);
+
+        ingredient = new int[]{1, 3, 2, 1, 2, 1, 3, 1, 2};
+        result = 0;
+        assertEquals(day17.solution3(ingredient), result);
+
+        ingredient = new int[]{1, 1, 2, 3, 1, 3, 1, 2};
+        result = 1;
+        assertEquals(day17.solution3(ingredient), result);
+
+        ingredient = new int[]{1, 1, 2, 3, 1, 3, 1, 2, 3};
+        result = 1;
+        assertEquals(day17.solution3(ingredient), result);
+
+        ingredient = new int[]{1, 1, 2, 3, 1, 3, 1, 2, 3, 3};
+        result = 1;
+        assertEquals(day17.solution3(ingredient), result);
+
+        ingredient = new int[]{1, 1, 2, 3, 1, 3, 1, 2, 3, 3, 3};
+        result = 1;
+        assertEquals(day17.solution3(ingredient), result);
+    }
 
 }

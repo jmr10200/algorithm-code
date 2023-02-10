@@ -100,4 +100,39 @@ public class Level1Day17 {
         return answer;
     }
 
+    /**
+     * 햄버거 만들기
+     * @param ingredient 전해지는 재료의 정보를 나타내는 정수 배열
+     * @return 포장하는 햄버거의 개수
+     * 햄버거 포장 순서 : 아래서부터, 빵 – 야채 – 고기 - 빵  (숫자로 1-2-3-1)
+     */
+    public int solution3(int[] ingredient) {
+        int answer = 0;
+        // 리스트로 변환
+//        List<Integer> ingredientList = Arrays.stream(ingredient).boxed().collect(Collectors.toList());
+        List<Integer> ingredientList = new ArrayList<>();
+        for (int ingre : ingredient) {
+            ingredientList.add(ingre);
+        }
+
+
+        for (int i = 3; i < ingredientList.size(); i++) {
+            if (ingredientList.get(i - 3) == 1 && ingredientList.get(i - 2) == 2 &&
+                    ingredientList.get(i - 1) == 3 && ingredientList.get(i) == 1) {
+                answer++;
+                ingredientList.remove(i);
+                ingredientList.remove(i - 1);
+                ingredientList.remove(i - 2);
+                ingredientList.remove(i - 3);
+                if (ingredientList.size() >= 4) {
+                    i = (i - 3) < 2 ? 2 : i - 3;
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return answer;
+    }
+
 }
