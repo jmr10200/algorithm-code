@@ -74,4 +74,19 @@ class Level1Day17Test {
         assertEquals(day17.solution3(ingredient), result);
     }
 
+    @Test
+    @DisplayName("둘만의 암호")
+    void solution4() {
+        String s = "aukks";
+        String skip = "wbqd";
+        int index = 5;
+        String result = "happy";
+        assertEquals(day17.solution4(s, skip, index), result);
+
+        s = "ybcde";
+        skip = "az";
+        index = 1;
+        result = "bcdef";
+        assertEquals(day17.solution4(s, skip, index), result);
+    }
 }

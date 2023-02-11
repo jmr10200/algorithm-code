@@ -135,4 +135,54 @@ public class Level1Day17 {
         return answer;
     }
 
+    /**
+     * 둘만의 암호
+     * @param s 문자열
+     * @param skip 건너뛰는 문자열
+     * @param index 몇번째 뒤의 알파벳으로 바꾸는가
+     * @return 바뀐 알파벳
+     */
+    public String solution4(String s, String skip, int index) {
+        String answer = "";
+        char[] charArray = s.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            int position = 0;
+            Integer sInt = Integer.valueOf(charArray[i]);
+            int j = 1;
+            while (j <= index) {
+                int asciiCode = (sInt + position + j - 97) % 26 + 97;
+                String asciiStr = Character.toString(asciiCode);
+                // 포함되지 않으면 카운트 +1
+                if (!skip.contains(asciiStr)) {
+                    j++;
+                } else {
+                    // 포함되면 포지션 +1
+                    position++;
+                }
+            }
+            // 소문자 ASCII 코드 확인
+            int result = (sInt + index + position - 97) % 26;
+            answer += Character.toString(result + 97);
+        }
+        return answer;
+    }
+
+    /** 아래 오답 */
+//    public String solution(String s, String skip, int index) {
+//        String answer = "";
+//        for (int i = 0; i < s.length(); i++) {
+//            int rightIdx = 0;
+//            char sChar = s.charAt(i);
+//            for (int j = 0; j < index; j++) {
+//                char sCharNum = (char) (sChar + j);
+//                if (skip.contains(String.valueOf(sCharNum))) {
+//                    rightIdx++;
+//                }
+//            }
+//            // 소문자 ASCII 코드 확인
+//            int result = (sChar + index + rightIdx - 97) % 26;
+//            answer += String.valueOf((char) (result + 97));
+//        }
+//        return answer;
+//    }
 }
