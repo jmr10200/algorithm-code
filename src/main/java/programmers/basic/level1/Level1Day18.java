@@ -66,7 +66,7 @@ public class Level1Day18 {
         /** 정지 여부 : 정지가 아니면 false, 정지면 true */
         Boolean block;
 
-        /** 신고 받은 횟수 */
+        /** 정지 기준 */
         Integer k;
 
         public ReportDetail(List<String> reportIds, Integer reportedCount, Integer k){
