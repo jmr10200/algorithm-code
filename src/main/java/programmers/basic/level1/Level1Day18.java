@@ -33,7 +33,6 @@ public class Level1Day18 {
 
             // 신고 받은사람 카운트 +1
             ReportDetail toId = usersMap.get(reportDetail[1]);
-            // 동일 신고자는 1번만 카운트
             toId.countReport();
         }
         answer = new int[id_list.length];
