@@ -26,4 +26,36 @@ class Level2Day01Test {
         assertEquals(day01.solution1(s), result);
     }
 
+    @Test
+    @DisplayName("JadenCase 문자열 만들기")
+    void solution2() {
+        String s = "3people unFollowed me";
+        String result = "3people Unfollowed Me";
+        assertEquals(day01.solution2(s), result);
+
+        s = "for the last week";
+        result = "For The Last Week";
+        assertEquals(day01.solution2(s), result);
+
+        s = "for  the   last week";
+        result = "For  The   Last Week";
+        assertEquals(day01.solution2(s), result);
+
+        s = " for  the   last week";
+        result = " For  The   Last Week";
+        assertEquals(day01.solution2(s), result);
+
+        s = "  for  the   last week";
+        result = "  For  The   Last Week";
+        assertEquals(day01.solution2(s), result);
+
+        s = "for  the   last week ";
+        result = "For  The   Last Week ";
+        assertEquals(day01.solution2(s), result);
+
+        s = "for  the   last week  ";
+        result = "For  The   Last Week  ";
+        assertEquals(day01.solution2(s), result);
+    }
+
 }
