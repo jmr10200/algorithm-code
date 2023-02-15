@@ -58,4 +58,18 @@ class Level2Day01Test {
         assertEquals(day01.solution2(s), result);
     }
 
+    @Test
+    @DisplayName("최솟값 만들기")
+    void solution3() {
+        int[] a = {1, 4, 2};
+        int[] b = {5, 4, 4};
+        int result = 29;
+        assertEquals(day01.solution3(a, b), result);
+
+        a = new int[]{1, 2};
+        b = new int[]{3, 4};
+        result = 10;
+        assertEquals(day01.solution3(a, b), result);
+    }
+
 }

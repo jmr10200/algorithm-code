@@ -59,4 +59,24 @@ public class Level2Day01 {
         return answer;
     }
 
+    /**
+     * 최솟값 만들기
+     * @param A 배열 A
+     * @param B 배열 B
+     * @return 배열 A 와 배열 B 에서 각각 숫자 하나를 꺼내 곱한 값들의 합의 최솟값
+     * 배열 A 와 배열 B 의 길이는 같다.
+     */
+    public int solution3(int[] A, int[] B) {
+        int answer = 0;
+        // 정렬
+        Arrays.sort(A);
+        Arrays.sort(B);
+        for (int i = 0; i < A.length; i++) {
+            // A는 앞에서부터, B는 뒤에서부터
+            answer += A[i] * B[B.length - 1 - i];
+        }
+        return answer;
+    }
+
+
 }
