@@ -78,5 +78,42 @@ public class Level2Day01 {
         return answer;
     }
 
+    /**
+     * 올바른 괄호
+     * @param s '(' 또는 ')' 으로 이루어진 문자열
+     * @return '()'으로 짝지어져 올바른 괄호이면 true, 아니면 false
+     *
+     */
+    public boolean solution4(String s) {
+        boolean answer = true;
+        char[] chars = s.toCharArray();
+        int openCount = 0;
+        // 시작 ) or 끝 ( or 괄호갯수 홀수 false
+        if (ROUND_CLOSE == chars[0] || ROUND_OPEN == chars[chars.length - 1] || chars.length % 2 != 0) {
+            return false;
+        } else {
+            for (int i = 0; i < chars.length; i++) {
+                // ( 이면 카운트 +1
+                if (ROUND_OPEN == chars[i]) {
+                    openCount++;
+                } else {
+                    // ) 이면 쌍을 확인한다.
+                    // ( 괄호 수가 1 미만이면, 여는 괄호없이 바로 닫는 괄호가 나오는 것이므로 false
+                    if (openCount < 1) {
+                        return false;
+                    }
+                    // ( 괄호 수가 1 이상이면, 닫는 괄호와 쌍이 맞으므로 카운트 -1
+                    openCount--;
+                }
+            }
+        }
+        // s 전체 길이가 짝수이면서, ( 갯수가 짝수로 끝나는 경우, 닫는 괄호가 없으므로 false
+        if (openCount > 0) {
+            return false;
+        }
+        return answer;
+    }
 
+    private final static char ROUND_OPEN = '(';
+    private final static char ROUND_CLOSE = ')';
 }

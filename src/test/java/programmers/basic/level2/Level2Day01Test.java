@@ -61,8 +61,8 @@ class Level2Day01Test {
     @Test
     @DisplayName("최솟값 만들기")
     void solution3() {
-        int[] a = {1, 4, 2};
-        int[] b = {5, 4, 4};
+        int[] a = {1, 4, 2}; // 1*5, 2*4, 1*5
+        int[] b = {5, 4, 4}; // 4*4 , 4*2, 5*1
         int result = 29;
         assertEquals(day01.solution3(a, b), result);
 
@@ -72,4 +72,40 @@ class Level2Day01Test {
         assertEquals(day01.solution3(a, b), result);
     }
 
+    @Test
+    @DisplayName("올바른 괄호")
+    void solution4() {
+        String s = "()()";
+        boolean result = true;
+//        assertEquals(day01.solution4(s), result);
+        assertTrue(day01.solution4(s));
+
+        s = "(())()";
+        result = true;
+        assertTrue(day01.solution4(s));
+
+        s = ")()(";
+        result = false;
+        assertFalse(day01.solution4(s));
+
+        s = "(()(";
+        result = false;
+        assertFalse(day01.solution4(s));
+
+        s = "()(";
+        result = false;
+        assertFalse(day01.solution4(s));
+
+        s = "((())()";
+        result = false;
+        assertFalse(day01.solution4(s));
+
+        s = "())(";
+        result = false;
+        assertFalse(day01.solution4(s));
+
+        s = "(())((";
+        result = false;
+        assertFalse(day01.solution4(s));
+    }
 }
