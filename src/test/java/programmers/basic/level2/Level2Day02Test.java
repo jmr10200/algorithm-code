@@ -26,4 +26,12 @@ class Level2Day02Test {
         assertArrayEquals(day02.solution1(s), result);
     }
 
+    @Test
+    @DisplayName("숫자의 표현")
+    void solution2() {
+        int n = 15;
+        int result = 4;
+        assertEquals(day02.solution2(n), result);
+    }
+
 }

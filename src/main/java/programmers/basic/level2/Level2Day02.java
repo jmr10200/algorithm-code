@@ -31,4 +31,27 @@ public class Level2Day02 {
         return answer;
     }
 
+    /**
+     * 숫자의 표현
+     * @param n 자연수
+     * @return 연속된 자연수들로 n을 표현하는 방법의 수
+     */
+    public int solution2(int n) {
+        int answer = 0;
+        for (int i = 1; i <= n; i++) {
+            int sum = 0;
+            for (int j = i; j <= n; j++) {
+                sum += j;
+                if (sum > n) {
+                    break;
+                }
+                if (sum == n) {
+                    answer++;
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+
 }
