@@ -73,4 +73,18 @@ public class Level2Day02 {
         return answer;
     }
 
+    /**
+     * 재귀함수 사용하는 방식
+     * 여러번 피보나치 수를 찾아야 하는 경우,
+     * solution3() 의 방식처럼 미리 배열을 생성하고 해당 값을 배열에 저장해두는 것이 빠르다.
+     * 재귀함수를 이용하면 계산했던 값을 또 계산해야하기 때문이다.
+     */
+    private int fibo(int x) {
+        if (x == 1 || x == 2) {
+            return 1;
+        }
+        return fibo(x - 1) + fibo(x - 2);
+    }
+
+
 }
