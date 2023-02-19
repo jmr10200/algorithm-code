@@ -107,7 +107,7 @@ public class Level2Day01 {
                 }
             }
         }
-        // s 전체 길이가 짝수이면서, ( 갯수가 짝수로 끝나는 경우, 닫는 괄호가 없으므로 false
+        // s 전체 길이가 짝수이면서, ( 갯수가 짝수로 끝나는 경우, 닫는 괄호가 없으므로 false , 예 : (())((
         if (openCount > 0) {
             return false;
         }
