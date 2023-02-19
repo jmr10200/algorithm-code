@@ -34,4 +34,16 @@ class Level2Day02Test {
         assertEquals(day02.solution2(n), result);
     }
 
+    @Test
+    @DisplayName("피보나치 수")
+    void solution3() {
+        int n = 3;
+        int result = 2;
+        assertEquals(day02.solution3(n), result);
+
+        n = 5;
+        result = 5;
+        assertEquals(day02.solution3(n), result);
+    }
+
 }

@@ -54,4 +54,23 @@ public class Level2Day02 {
         return answer;
     }
 
+    /**
+     * 피보나치 수
+     * @param n
+     * @return n번째 피보나치 수를 1234567으로 나눈 나머지
+     */
+    public int solution3(int n) {
+        int answer = 0;
+        long[] fibonacci = new long[n + 1];
+        fibonacci[1] = 1;
+        fibonacci[2] = 1;
+        // 문제 요구조건
+        long divide = 1234567;
+        for (int i = 3; i < n + 1; i++) {
+            fibonacci[i] = (fibonacci[i - 1] + fibonacci[i - 2]) % divide;
+        }
+        answer = (int) fibonacci[n];
+        return answer;
+    }
+
 }
