@@ -46,4 +46,16 @@ class Level2Day02Test {
         assertEquals(day02.solution3(n), result);
     }
 
+    @Test
+    @DisplayName("다음 큰 숫자")
+    void solution4() {
+        int n = 78;
+        int result = 83;
+        assertEquals(day02.solution4(n), result);
+
+        n = 15;
+        result = 23;
+        assertEquals(day02.solution4(n), result);
+    }
+
 }

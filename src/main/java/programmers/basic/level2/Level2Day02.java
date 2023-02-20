@@ -86,5 +86,50 @@ public class Level2Day02 {
         return fibo(x - 1) + fibo(x - 2);
     }
 
+    /**
+     * 다음 큰 숫자
+     * @param n 자연수
+     * @return n의 다음 큰 숫자
+     * 조건 1. n의 다음 큰 숫자는 n보다 큰 자연수 입니다.
+     * 조건 2. n의 다음 큰 숫자와 n은 2진수로 변환했을 때 1의 갯수가 같습니다.
+     * 조건 3. n의 다음 큰 숫자는 조건 1, 2를 만족하는 수 중 가장 작은 수 입니다.
+     */
+    public int solution4(int n) {
+        int answer = 0;
+        // n 을 2진수로 변환했을 때 1의 갯수
+        int nCount = getBinaryOneCount(n);
+        // n 보다 큰 수 중에 2진수로 변환했을때 1의 갯수가 같은 수
+        int largeCount = 0;
+        int largeN = n;
+        while (largeCount != nCount) {
+            largeN++;
+            largeCount = getBinaryOneCount(largeN);
+        }
+        answer = largeN;
+        return answer;
+    }
+
+    /**
+     * 방법 1
+     * 자연수 x를 2진수로 변환했을 때 1의 갯수
+     */
+    private int getBinaryOneCount(int x) {
+        char[] chars = Integer.toBinaryString(x).toCharArray();
+        int count = 0;
+        for (char c : chars) {
+            if (c == '1') {
+                count++;
+            }
+        }
+        return count;
+    }
+    /**
+     * 방법 2
+     * 자연수 x를 2진수 변환했을 때 1의 갯수
+     * (방법 1이 더 빠르다)
+     */
+    private int getBinaryOneCnt(int x) {
+        return Integer.toBinaryString(x).replaceAll("0", "").length();
+    }
 
 }
