@@ -41,4 +41,33 @@ class Level2Day03Test {
         assertArrayEquals(day03.solution2(n, words), result);
     }
 
+    @Test
+    @DisplayName("카펫")
+    void solution3() {
+        int brown = 10;
+        int yellow = 2;
+        int[] result = {4, 3};
+        assertArrayEquals(day03.solution3(brown, yellow), result);
+
+        brown = 8;
+        yellow = 1;
+        result = new int[]{3, 3};
+        assertArrayEquals(day03.solution3(brown, yellow), result);
+
+        brown = 24;
+        yellow = 24;
+        result = new int[]{8, 6};
+        assertArrayEquals(day03.solution3(brown, yellow), result);
+
+        brown = 18;
+        yellow = 6;
+        result = new int[]{8, 3};
+        assertArrayEquals(day03.solution3(brown, yellow), result);
+
+        brown = 16;
+        yellow = 8;
+        result = new int[]{6, 4};
+        assertArrayEquals(day03.solution3(brown, yellow), result);
+    }
+
 }

@@ -67,6 +67,37 @@ public class Level2Day03 {
         return answer;
     }
 
+    /**
+     * 카펫
+     * @param brown 8 <= brown <= 5000
+     * @param yellow 1 <= yellow <= 2000000
+     * @return 카펫의 가로 크기, 세로 크기
+     */
+    public int[] solution3(int brown, int yellow) {
+        int[] answer = new int[2];
+        // 전체 넓이
+        int total = brown + yellow;
+        // 세로길이로 나누기 : 노란색을 감싸므로 3부터 시작
+        int width = 0;
+        int height = 0;
+        for (int i = 3; i < total; i++) {
+            height = i;
+            // 세로길이 3부터 나누어 떨어지면
+            if (total % height == 0) {
+                // 가로 길이 취득 (몫)
+                width = total / height;
+                // 갈색 갯수 취득 : 가로길이 x 2 + (세로길이 - 2) x 2
+                int brownCnt = width * 2 + ((height - 2) * 2);
+                // 계산된 갈색 갯수 = 주어진 갈색 갯수 이면 값 설정후 리턴
+                if (brownCnt == brown) {
+                    answer[0] = width;
+                    answer[1] = height;
+                    return answer;
+                }
+            }
+        }
+        return answer;
+    }
 
 
 }
