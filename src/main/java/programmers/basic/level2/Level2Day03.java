@@ -99,5 +99,31 @@ public class Level2Day03 {
         return answer;
     }
 
+    /**
+     * 구명보트
+     * @param people 사람들의 몸무게를 담은 배열
+     * @param limit 구명보트의 무게 제한
+     * @return 모든 사람을 구출하기 위해 필요한 구명보트 개수의 최솟값
+     * 구명보트는 최대 2명
+     */
+    public int solution4(int[] people, int limit) {
+        int answer = 0;
+        // 몸무게 오름차순 정렬 (int[] 이므로 역순정렬 하려면 Wrapper 클래스로 수정해줘야 한다)
+        Arrays.sort(people);
+
+        int end = people.length - 1; // 마지막 인덱스
+        int start = 0; // 첫 인덱스
+        int weight = 0; // 무게
+
+        while (end >= start) {
+            weight = people[end--]; // end= 3이면 people[3]이 들어가고, end 는 2 가 된다
+            if (weight + people[start] <= limit) {
+                start++;
+            }
+            answer++;
+        }
+
+        return answer;
+    }
 
 }

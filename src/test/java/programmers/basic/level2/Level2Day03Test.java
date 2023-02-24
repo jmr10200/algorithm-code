@@ -70,4 +70,17 @@ class Level2Day03Test {
         assertArrayEquals(day03.solution3(brown, yellow), result);
     }
 
+    @Test
+    @DisplayName("구명보트")
+    void solution4() {
+        int[] people = {70, 50, 80, 50};
+        int limit = 100;
+        int result = 3;
+        assertEquals(day03.solution4(people, limit), result);
+
+        people = new int[]{70, 80, 50};
+        limit = 100;
+        result = 3;
+        assertEquals(day03.solution4(people, limit), result);
+    }
 }
