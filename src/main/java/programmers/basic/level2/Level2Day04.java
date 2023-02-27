@@ -82,5 +82,32 @@ public class Level2Day04 {
         return euclidean(b, a % b);
     }
 
+    /**
+     * 점프와 순간이동
+     * @param n 이동하려는 거리
+     * @return 사용해야 하는 건전지 사용량의 최솟값
+     * 한 번에 K 칸을 앞으로 점프하거나, (현재까지 온 거리) x 2 에 해당하는 위치로 순간이동
+     * 순간이동을 하면 건전지 사용량이 줄지 않지만, 앞으로 K 칸을 점프하면 K 만큼의 건전지 사용
+     */
+    public int solution3(int n) {
+        int ans = 0;
+        int battery = 0;
+        while (n > 1) {
+            // 순간이동 가능하면 순간이동
+            if (n % 2 == 0) {
+                n /= 2;
+            } else {
+                // 아니면 점프
+                n = n - 1;
+                battery++;
+            }
+        }
+        // 순간이동 할 수 없는 남은거리 점프
+        if (n > 0) {
+            battery = battery + n;
+        }
+        ans = battery;
+        return ans;
+    }
 
 }

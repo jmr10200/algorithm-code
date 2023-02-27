@@ -32,4 +32,20 @@ class Level2Day04Test {
         assertEquals(day04.solution2(arr), result);
     }
 
+    @Test
+    @DisplayName("점프와 순간이동")
+    void solution3() {
+        int n = 5;
+        int result = 2;
+        assertEquals(day04.solution3(n), result);
+
+        n = 6;
+        result = 2;
+        assertEquals(day04.solution3(n), result);
+
+        n = 5000;
+        result = 5;
+        assertEquals(day04.solution3(n), result);
+    }
+
 }
