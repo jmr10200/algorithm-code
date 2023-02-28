@@ -48,4 +48,15 @@ class Level2Day04Test {
         assertEquals(day04.solution3(n), result);
     }
 
+    @Test
+    @DisplayName("멀리 뛰기")
+    void solution4() {
+        int n = 4;
+        long result = 5;
+        assertEquals(day04.solution4(n), result);
+
+        n = 3;
+        result = 3;
+        assertEquals(day04.solution4(n), result);
+    }
 }

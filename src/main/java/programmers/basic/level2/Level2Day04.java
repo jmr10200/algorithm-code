@@ -110,4 +110,34 @@ public class Level2Day04 {
         return ans;
     }
 
+    /**
+     * 멀리 뛰기
+     * @param n 뛰어야할 칸 수
+     * @return 끝에 도달하는 방법이 몇 가지인지 알아내, 여기에 1234567를 나눈 나머지
+     * 한번에 1칸, 또는 2칸을 뛸 수 있다.
+     */
+    public long solution4(int n) {
+        long answer = 0;
+        if (n == 1) {
+            answer = 1;
+            return answer;
+        } else if (n == 2) {
+            answer = 2;
+            return answer;
+        }
+        // 피보나치
+        long[] fibonacci = new long[n + 1];
+        fibonacci[1] = 1;
+        fibonacci[2] = 2;
+        // 문제 요구조건
+        long divide = 1234567;
+        for (int i = 3; i < n + 1; i++) {
+            fibonacci[i] = (fibonacci[i - 1] + fibonacci[i - 2]) % divide;
+        }
+        // 1, 2, 3, 5, 8, 13, 21, 34, 45, ... 피보나치수열과 같다.
+        answer = fibonacci[n];
+
+        return answer;
+    }
+
 }
