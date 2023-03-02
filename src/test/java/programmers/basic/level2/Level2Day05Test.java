@@ -30,4 +30,60 @@ class Level2Day05Test {
         assertEquals(day05.solution1(citations), result);
     }
 
+    @Test
+    @DisplayName("괄호 회전하기")
+    void solution2() {
+        String s = "[](){}";
+        int result = 3;
+        assertEquals(day05.solution2(s), result);
+
+        s = "}]()[{";
+        result = 2;
+        assertEquals(day05.solution2(s), result);
+
+        s = "[)(]";
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+
+        s = "}}}";
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+
+        s = "[{((}]";
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+
+        s = "}{{}"; //}{{}, {{}}, {}}{, }}{{
+        result = 1;
+        assertEquals(day05.solution2(s), result);
+
+        s = "()(";
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+
+        s = "((())()";
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+
+        s = "())(";// ())(, ))((, )((), (())
+        result = 1;
+        assertEquals(day05.solution2(s), result);
+
+        s = "(())(("; // (())(( , ())(((, ))((((, )((((, (((()
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+
+        s = "((((";
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+
+        s = "{))("; //{))(, ))({, )({), ({))
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+
+        s = "({)}";
+        result = 0;
+        assertEquals(day05.solution2(s), result);
+    }
+
 }
