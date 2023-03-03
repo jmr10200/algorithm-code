@@ -86,4 +86,24 @@ class Level2Day05Test {
         assertEquals(day05.solution2(s), result);
     }
 
+
+
+    @Test
+    @DisplayName("귤 고르기")
+    void solution4() {
+        int k = 6;
+        int[] tangerine = {1, 3, 2, 5, 4, 5, 2, 3};
+        int result = 3;
+        assertEquals(day05.solution4(k, tangerine), result);
+
+        k = 4;
+        tangerine = new int[]{1, 3, 2, 5, 4, 5, 2, 3};
+        result = 2;
+        assertEquals(day05.solution4(k, tangerine), result);
+
+        k = 2;
+        tangerine = new int[]{1, 1, 1, 1, 2, 2, 2, 3};
+        result = 1;
+        assertEquals(day05.solution4(k, tangerine), result);
+    }
 }

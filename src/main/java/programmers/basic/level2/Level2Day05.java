@@ -80,4 +80,38 @@ public class Level2Day05 {
     }
 
 
+
+
+    /**
+     * 귤 고르기
+     * @param k 한 상자에 담으려는 귤의 개수
+     * @param tangerine 귤의 크기를 담은 배열
+     * @return 귤 k개를 고를 때 크기가 서로 다른 종류의 수의 최솟값
+     */
+    public int solution4(int k, int[] tangerine) {
+        int answer = 0;
+
+        // 갯수로 정렬해야한다.
+        Map<Integer, Integer> tangerineMap = new HashMap<>();
+
+        // 전체 Map 에 담기
+        for (int tan : tangerine) {
+            tangerineMap.put(tan, tangerineMap.getOrDefault(tan, 0) + 1);
+        }
+        // value 값으로 정렬 (갯수가 많은 순으로 정렬)
+        List<Integer> keyList = new ArrayList<>(tangerineMap.keySet());
+        Collections.sort(keyList, (o1, o2) -> (tangerineMap.get(o2).compareTo(tangerineMap.get(o1))));
+
+        int kCount = 0;
+        int i = 0; // key 인덱스
+        int[] temp = new int[k];
+        while (kCount < k) {
+            temp[i] = keyList.get(i);
+            kCount += tangerineMap.get(keyList.get(i));
+            i++;
+        }
+        answer = i;
+
+        return answer;
+    }
 }
