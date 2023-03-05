@@ -86,7 +86,39 @@ class Level2Day05Test {
         assertEquals(day05.solution2(s), result);
     }
 
+    @Test
+    @DisplayName("캐시")
+    void solution3() {
+        int cacheSize = 3;
+        String[] cities = {"Jeju", "Pangyo", "Seoul", "NewYork", "LA", "Jeju", "Pangyo", "Seoul", "NewYork", "LA"};
+        int resultTime = 50;
+        assertEquals(day05.solution3(cacheSize, cities), resultTime);
 
+        cacheSize = 3;
+        cities = new String[]{"Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul", "Jeju", "Pangyo", "Seoul"};
+        resultTime = 21;
+        assertEquals(day05.solution3(cacheSize, cities), resultTime);
+
+        cacheSize = 2;
+        cities = new String[]{"Jeju", "Pangyo", "Seoul", "NewYork", "LA", "SanFrancisco", "Seoul", "Rome", "Paris", "Jeju", "NewYork", "Rome"};
+        resultTime = 60;
+        assertEquals(day05.solution3(cacheSize, cities), resultTime);
+
+        cacheSize = 5;
+        cities = new String[]{"Jeju", "Pangyo", "Seoul", "NewYork", "LA", "SanFrancisco", "Seoul", "Rome", "Paris", "Jeju", "NewYork", "Rome"};
+        resultTime = 52;
+        assertEquals(day05.solution3(cacheSize, cities), resultTime);
+
+        cacheSize = 2;
+        cities = new String[]{"Jeju", "Pangyo", "NewYork", "newyork"};
+        resultTime = 16;
+        assertEquals(day05.solution3(cacheSize, cities), resultTime);
+
+        cacheSize = 0;
+        cities = new String[]{"Jeju", "Pangyo", "Seoul", "NewYork", "LA"};
+        resultTime = 25;
+        assertEquals(day05.solution3(cacheSize, cities), resultTime);
+    }
 
     @Test
     @DisplayName("귤 고르기")

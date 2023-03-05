@@ -79,7 +79,87 @@ public class Level2Day05 {
         return s.substring(1) + s.substring(0, 1);
     }
 
+    /**
+     * 캐시
+     * @param cacheSize 캐시크기
+     * @param cities 도시이름 배열: 공백, 숫자, 특수문자 등이 없는 영문자로 구성되며, 대소문자 구분을 하지 않는다.
+     * @return 입력된 도시이름 배열을 순서대로 처리할 때, "총 실행시간"을 출력
+     * == 조건 ==
+     * 캐시 교체 알고리즘은 LRU(Least Recently Used)를 사용한다.
+     * cache hit일 경우 실행시간은 1이다.
+     * cache miss일 경우 실행시간은 5이다.
+     */
+    public int solution3(int cacheSize, String[] cities) {
+        int answer = 0;
+        // 캐시 생성
+        LRUCache cache = new LRUCache(cacheSize);
+        // String 의 도시들을 순서대로
+        for (String city : cities) {
+            cache.refer(city.toLowerCase());
+        }
+        answer = cache.time;
 
+        return answer;
+    }
+
+    /**
+     * LRU Cache 클래스
+     */
+    public class LRUCache {
+
+        // 캐시의 키값 저장 (Deque 는 LIFO)
+        private Deque<String> doublyQueue;
+
+        // store references of key in cache
+        private HashSet<String> hashSet;
+
+        // 캐시 최대 용량
+        private final int CACHE_SIZE;
+
+        // 실행시간
+        private int time;
+
+        // miss time
+        private final int MISS_TIME = 5;
+        // hit time
+        private final int HIT_TIME = 1;
+
+        // Constructor
+        public LRUCache(int capacity) {
+            doublyQueue = new LinkedList<>();
+            hashSet = new HashSet<>();
+            CACHE_SIZE = capacity;
+            time = 0;
+        }
+
+        /* Refer the page within the LRU cache */
+        public void refer(String page) {
+            // cache 사이즈가 0일때
+            if (CACHE_SIZE == 0) {
+                // miss
+                time = time + MISS_TIME;
+                hashSet.add(page);
+            } else {
+                // 포함되어 있지 않으면 처음방문
+                if (!hashSet.contains(page)) {
+                    if (doublyQueue.size() == CACHE_SIZE) {
+                        String last = doublyQueue.removeLast(); // 마지막 방문 페이지 제거
+                        hashSet.remove(last);
+                    }
+                    // miss
+                    time = time + MISS_TIME;
+                } else {
+                    // 포함되어 있으면 제거(remove()) 하고 앞으로 꺼내야함 (push())
+                    doublyQueue.remove(page);
+                    // hit
+                    time = time + HIT_TIME;
+                }
+                doublyQueue.push(page);
+                hashSet.add(page); // HashSet 은 중복 값 x, 순서보장 x
+            }
+        }
+
+    }
 
 
     /**
