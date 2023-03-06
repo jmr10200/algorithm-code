@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-public class Sort {
+public class ListSort {
 
     public static void main(String[] args) {
         // 리스트 확인
         int[] numbers = {5, 2, 1, 3, 7, 4, 6, 10, 9, 8};
-        Sort sortTest = new Sort();
+        ListSort sortTest = new ListSort();
 
         sortTest.arrayListSort(numbers);
 
