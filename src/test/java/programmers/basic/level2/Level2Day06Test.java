@@ -22,5 +22,28 @@ class Level2Day06Test {
         assertEquals(day06.solution1(clothes), result);
     }
 
+    @Test
+    @DisplayName("튜플")
+    void solution2() {
+        String s = "{{2},{2,1},{2,1,3},{2,1,3,4}}";
+        int[] result = {2, 1, 3, 4};
+        assertArrayEquals(day06.solution2(s), result);
+
+        s = "{{1,2,3},{2,1},{1,2,4,3},{2}}";
+        result = new int[]{2, 1, 3, 4};
+        assertArrayEquals(day06.solution2(s), result);
+
+        s = "{{20,111},{111}}";
+        result = new int[]{111, 20};
+        assertArrayEquals(day06.solution2(s), result);
+
+        s = "{{123}}";
+        result = new int[]{123};
+        assertArrayEquals(day06.solution2(s), result);
+
+        s = "{{4,2,3},{3},{2,3,4,1},{2,3}}";
+        result = new int[]{3, 2, 4, 1};
+        assertArrayEquals(day06.solution2(s), result);
+    }
 
 }
