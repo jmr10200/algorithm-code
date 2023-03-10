@@ -120,5 +120,58 @@ public class Level2Day06 {
         return answer;
     }
 
+    /**
+     * 프린터
+     * @param priorities 현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열
+     * @param location 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지 (인덱스표기 = 현재 대기목록에 있는 작업 수 - 1)
+     * @return 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지
+     *
+     * 중요도가 높은 문서를 먼저 인쇄
+     * 1. 인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다.
+     * 2. 나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다.
+     * 3. 그렇지 않으면 J를 인쇄합니다.
+     * 예를 들어, 4개의 문서(A, B, C, D)가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다.
+     */
+    public int solution4(int[] priorities, int location) {
+        int answer = 0;
+        Deque<Integer[]> deque = new LinkedList<>(); // LIFO
+        List<Integer> printList = new ArrayList<>(); // 프린트 리스트
+        for (int i = 0; i < priorities.length; i++) {
+            deque.add(new Integer[]{priorities[i], i}); // 우선도, 인덱스
+            printList.add(priorities[i]);
+        }
+        // 프린트 리스트를 우선도가 가장 높은 순서로 정렬
+        printList.sort(Comparator.reverseOrder());
+        int max = printList.get(0);
+
+        int printCnt = 0;
+        // 프린트 모두 할 때까지 반복 (큐가 빌 때까지)
+        while (!deque.isEmpty()) {
+            if (deque.peek()[0] == max) { // 1번이 가장 큰 값이면 프린트
+                // 큐제거
+                Integer[] dequePeek = deque.peek();
+                deque.remove(dequePeek);
+
+                // 문서 목록 제거
+                printList.remove(dequePeek[0]);
+                printCnt++;
+                if (printList.size() != 0) {
+                    max = printList.get(0);
+                }
+
+                if (dequePeek[1] == location) { // 뽑아낸 것이 찾는 것이면 리턴
+                    answer = printCnt;
+                    return answer;
+                }
+            } else {
+                // 큐의 제일 앞에 있는 값의 우선도가 높지 않으면 큐 정렬
+                Integer[] dequePeek = deque.peek();
+                deque.remove(dequePeek);
+                deque.add(dequePeek);
+            }
+        }
+
+        return answer;
+    }
 
 }

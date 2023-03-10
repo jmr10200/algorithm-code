@@ -92,4 +92,32 @@ class Level2Day06Test {
         // 100-54 = 46 % 100
     }
 
+    @Test
+    @DisplayName("프린터")
+    void solution4() {
+        int[] priorities = {2, 1, 3, 2};
+        int location = 2;
+        int result = 1;
+        assertEquals(day06.solution4(priorities, location), result);
+
+        priorities = new int[]{1, 1, 9, 1, 1, 1};
+        location = 0;
+        result = 5;
+        assertEquals(day06.solution4(priorities, location), result);
+
+        priorities = new int[]{1, 1, 2, 3, 2, 1};
+        location = 0;
+        result = 5;
+        assertEquals(day06.solution4(priorities, location), result);
+
+        priorities = new int[]{2, 1, 2, 1, 2, 1, 2, 1, 2};
+        location = 1;
+        result = 6;
+        assertEquals(day06.solution4(priorities, location), result);
+
+        priorities = new int[]{5};
+        location = 0;
+        result = 1;
+        assertEquals(day06.solution4(priorities, location), result);
+    }
 }
