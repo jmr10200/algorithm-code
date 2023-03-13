@@ -39,4 +39,19 @@ class Level2Day07Test {
         assertFalse(day07.solution2(phoneBook));
     }
 
+    @Test
+    @DisplayName("타겟 넘버")
+    void solution3() {
+        int[] numbers = {1, 1, 1, 1, 1};
+        int target = 3;
+        int result = 5;
+        assertEquals(day07.solution3(numbers, target), result);
+
+        numbers = new int[]{4, 1, 2, 1};
+        target = 4;
+        result = 2;
+        assertEquals(day07.solution3(numbers, target), result);
+    }
+
+
 }

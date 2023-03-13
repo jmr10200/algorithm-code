@@ -1,8 +1,6 @@
 package programmers.basic.level2;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Level2Day07 {
 
@@ -18,11 +16,6 @@ public class Level2Day07 {
         // 원소의 길이만큼 반복
         for (int i = 0; i < elements.length; i++) {
             result.add(elements[i]);
-            // 1이면? (0) (1) (2) (3) (4)  = 7 9 1 1 4
-            // 2이면? (0,1) (1,2) (2,3) (3,4), (4,0) = 16 10 2 5 11
-            // 3이면? (0,1,2) (1,2,3) (2,3,4) (3,4,0) (4,0,1) = 17 11 6 12 20
-            // 4이면? (0,1,2,3) (1,2,3,4) (2,3,4,0) (3,4,0,1) (4,0,1,2) = 18 15 13 21 21
-            // 5이면? (0,1,2,3,4) = 22
             for (int j = 0; j < elements.length; j++) {
                 int sum = 0;
                 for (int k = 0; k < i + 1; k++) { // 개수
@@ -67,5 +60,34 @@ public class Level2Day07 {
 
         return answer;
     }
+
+    /**
+     * 타겟 넘버
+     * @param numbers 사용할 수 있는 숫자가 담긴 배열
+     * @param target 타겟 넘버
+     * @return 숫자를 적절히 더하고 빼서 타겟 넘버를 만드는 방법의 수
+     */
+    public int solution3(int[] numbers, int target) {
+        int answer = 0;
+        answer = dfs(numbers, target, 0, 0);
+        return answer;
+    }
+
+    private int dfs(int[] numbers, int target, int sum, int current) {
+        int ans = 0;
+
+        if (current == numbers.length) {
+            if (target == sum) {
+                return 1;
+            }
+            return 0;
+        }
+
+        ans += dfs(numbers, target, sum + numbers[current], current + 1);
+        ans += dfs(numbers, target, sum + numbers[current] * -1, current + 1);
+
+        return ans;
+    }
+
 
 }
