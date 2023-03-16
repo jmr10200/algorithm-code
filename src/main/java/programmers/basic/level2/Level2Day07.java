@@ -89,5 +89,69 @@ public class Level2Day07 {
         return ans;
     }
 
+    /**
+     * 뉴스 클러스터링
+     * @param str1 영문의 글자쌍만 유효하다
+     * @param str2
+     * @return 입력으로 들어온 두 문자열의 자카드 유사도를 출력한다.
+     * 유사도 값은 0에서 1 사이의 실수이므로, 이를 다루기 쉽도록 65536을 곱한 후에 소수점 아래를 버리고 정수부만 출력한다.
+     *
+     * 자카드 유사도는 집합 간의 유사도를 검사하는 여러 방법 중의 하나로 알려져 있다.
+     * 두 집합 A, B 사이의 자카드 유사도 J(A, B)는 두 집합의 교집합 크기를 두 집합의 합집합 크기로 나눈 값으로 정의된다.
+     */
+    public int solution4(String str1, String str2) {
+        int answer = 0;
+        // 요구사항
+        int number = 65536;
+        // 교집합 수
+        int intersection = 0;
+        // 합집합 수
+        int union = 0;
+        // 모두 대문자로
+        str1 = str1.toUpperCase();
+        str2 = str2.toUpperCase();
+        // 2개씩 잘라서 리스트에 담기
+        List<String> str1List = getStrList(str1);
+        List<String> str2List = getStrList(str2);
+        // 리스트 길이가 둘다 0이면, 모두 공집합 이므로, J(A, B) = 1 로 정의
+        union = str1List.size() + str2List.size();
+        if (str1List.size() == 0 && str2List.size() == 0) {
+            answer = number;
+            return answer;
+        }
+        str1List.sort(Comparator.naturalOrder());
+        str2List.sort(Comparator.naturalOrder());
 
+
+        // 교집합 합집합 구하기
+        for (int i = 0; i < str1List.size(); i++) {
+            for (int j = 0; j < str2List.size(); j++) {
+                // 같으면 교집합
+                if (str1List.get(i).equals(str2List.get(j))) {
+                    intersection += 1;
+                    str2List.remove(j); // 교집합 체크후 삭제
+                    break;
+                }
+            }
+        }
+        // 합집합 = 집합A + 집합B - A교집합B
+        union = union - intersection;
+        double jaccard = (double) intersection / (double) union;
+        answer = (int) (jaccard * number);
+
+        // J(A, B) = A ∩ B / A ∪ B
+        return answer;
+    }
+
+    /** 문자열을 2개씩 잘라 리스트에 담아 리턴. 단, 알파벳으로 만 이루어진 2글자만 유효 */
+    private List<String> getStrList(String str1) {
+        List<String> strList = new ArrayList<>();
+        for (int i = 1; i < str1.length(); i++) {
+            String str = str1.substring(i - 1, i + 1);
+            if (str.matches("[A-Z]{2}")){
+                strList.add(str);
+            }
+        }
+        return strList;
+    }
 }

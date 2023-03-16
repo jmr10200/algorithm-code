@@ -53,5 +53,34 @@ class Level2Day07Test {
         assertEquals(day07.solution3(numbers, target), result);
     }
 
+    @Test
+    @DisplayName("뉴스 클러스터링")
+    void solution4() {
+        String str1 = "FRANCE";
+        String str2 = "french";
+        int result = 16384;
+        assertEquals(day07.solution4(str1, str2), result);
 
+        str1 = "handshake";
+        str2 = "shake hands";
+        result = 65536;
+        assertEquals(day07.solution4(str1, str2), result);
+
+        str1 = "aa1+aa2";
+        str2 = "AAAA12";
+        result = 43690;
+        assertEquals(day07.solution4(str1, str2), result);
+
+        str1 = "E=M*C^2";
+        str2 = "e=m*c^2";
+        result = 65536;
+        assertEquals(day07.solution4(str1, str2), result);
+
+        // 반례 추가
+        // ab, ba, ab와 ba, ab, ba에 대하여 자카드 값 0.5로 32768
+        str1 = "abab";
+        str2 = "baba";
+        result = 32768;
+        assertEquals(day07.solution4(str1, str2), result);
+    }
 }
